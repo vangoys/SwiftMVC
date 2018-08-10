@@ -6,6 +6,7 @@ protocol ChoseImageDelegate {
 
 class SecondViewController: UIViewController {
     
+    
     private var tapPikachuGestureRecognizer: UITapGestureRecognizer = .init()
     private var tapChermanderGestureRecognizer: UITapGestureRecognizer = .init()
     private var tapBulbasaurGestureRecognizer: UITapGestureRecognizer = .init()
@@ -43,6 +44,7 @@ class SecondViewController: UIViewController {
     var tapOnImageDelegate: ChoseImageDelegate!
     
     override func viewDidLoad() {
+        print ("загрузка SecondViewController")
         super.viewDidLoad()
         
         pikachuImage.isUserInteractionEnabled = true
@@ -62,10 +64,11 @@ class SecondViewController: UIViewController {
     }
     
     deinit {
-        print("View Controller Deinited")
+        print("Second View Controller Deinited")
     }
     
     @objc func pikachuImageTapped(_ sender: UITapGestureRecognizer) {
+        print("нажали pikachuImageTapped")
         if let tapedImage = (sender.view as! UIImageView).image {
             tapOnImageDelegate.tapOnImage(name: "Pikachu", image: tapedImage, color: .yellow )
         }
@@ -73,6 +76,7 @@ class SecondViewController: UIViewController {
     }
     
     @objc func chermanderImageTapped(_ sender: UITapGestureRecognizer) {
+        print("нажали chermanderImageTapped")
         if let tapedImage = (sender.view as! UIImageView).image {
             tapOnImageDelegate.tapOnImage(name: "Charmander", image: tapedImage, color: .red )
         }
@@ -80,6 +84,7 @@ class SecondViewController: UIViewController {
     }
     
     @objc func bulbasaurImageTapped(_ sender: UITapGestureRecognizer) {
+        print("нажали bulbasaurImageTapped")
         if (sender.view as! UIImageView).image != nil {
         tapOnImageDelegate.tapOnImage(name: "Bulbasaur", image: (sender.view as! UIImageView).image!, color: .green )
         }
